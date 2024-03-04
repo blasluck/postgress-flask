@@ -6,7 +6,7 @@ from os import environ
 
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__,static_folder="dist/static",template_folder="dist")
 key = Fernet.generate_key()
 
 
