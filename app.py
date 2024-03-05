@@ -3,10 +3,15 @@ from psycopg2 import connect, extras
 from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 from os import environ
+from flask_vite import Vite
 
 load_dotenv()
 
 app = Flask(__name__,static_folder="dist/static",template_folder="dist")
+
+app.config['VITE_DEV_MODE'] = app.config.get('DEBUG')
+Vite(app)
+
 key = Fernet.generate_key()
 
 
